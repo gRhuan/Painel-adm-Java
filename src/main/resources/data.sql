@@ -4,16 +4,16 @@ INSERT INTO produtos (nome, descricao, estoque, valor) VALUES
 ('Notebook', 'Notebook 15 polegadas com 8GB RAM', 30, 3500.00),
 ('Fone de Ouvido', 'Fone de ouvido sem fio Bluetooth', 100, 250.00),
 ('Monitor', 'Monitor LED 24 polegadas', 20, 800.00),
-('Teclado Mecânico', 'Teclado mecânico com iluminação RGB', 70, 200.00),
+('Teclado Mecanico', 'Teclado mecanico com iluminacao RGB', 70, 200.00),
 ('Tablet', 'Tablet com tela de 10 polegadas e 64GB', 40, 900.00),
 ('Impressora', 'Impressora a laser multifuncional', 15, 1200.00),
-('Câmera Digital', 'Câmera digital com 20MP', 25, 1800.00),
-('Mouse Gamer', 'Mouse com sensor de alta precisão', 150, 150.00),
-('Caixa de Som Bluetooth', 'Caixa de som portátil com Bluetooth', 80, 300.00);
+('Camera Digital', 'Camera digital com 20MP', 25, 1800.00),
+('Mouse Gamer', 'Mouse com sensor de alta precisao', 150, 150.00),
+('Caixa de Som Bluetooth', 'Caixa de som portatil com Bluetooth', 80, 300.00);
 
 -- Inserindo dados na tabela funcionarios
 INSERT INTO funcionarios (nome, cpf, salario, email, cargo, senha) VALUES
-('João Silva', '12345678900', 2500.00, 'joao@empresa.com', 'Vendedor', '123');
+('Gladyson Rhuan', '12345678900', 250.00, 'teste@teste.com', 'senha123', '3decd49a6c6dce88c16a85b9a8e42b51aa36f1e2');
 
 -- Inserindo dados na tabela clientes
 INSERT INTO clientes (nome, cpf, email, endereco, celular) VALUES

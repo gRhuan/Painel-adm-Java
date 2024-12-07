@@ -45,10 +45,10 @@ public class ClientesController {
     }
 
     @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable Long id) {
+    public ModelAndView editarCliente(@PathVariable Long id) {
         Clientes cliente = clienteService.findById(id);
         ModelAndView mv = new ModelAndView("clientes/editar");
-        mv.addObject("clientes", cliente);
+        mv.addObject("cliente", cliente); // Adiciona o objeto cliente ao modelo
         return mv;
     }
 

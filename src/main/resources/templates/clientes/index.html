@@ -46,7 +46,9 @@
                     <td th:text="${clientes.endereco}"></td>
                     <td th:text="${clientes.celular}"></td>
                     <div th:if="${session.usuarioLogado}">
-                        <td><button type="button" class="btn btn-warning">Editar</button></td>
+                        <td>
+                            <button type="button" class="btn btn-warning" th:onclick="'editarCliente(' + ${clientes.id} + ')'">Editar</button>
+                        </td>
                         <td>
                             <form th:action="@{/clientes/{id}/deletar(id=${clientes.id})}" method="post">
                                 <button class="btn btn-danger" type="submit"
@@ -101,7 +103,11 @@
     </div>
 
     <div th:include="fragments/login"></div>
-
+    <script>
+        function editarCliente(id) {
+            window.location.href = '/clientes/' + id + '/editar';
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

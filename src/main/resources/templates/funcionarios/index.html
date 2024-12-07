@@ -21,7 +21,7 @@
     <div class="center">
 
         <!-- Botão para abrir a modal -->
-        <button  type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+        <button th:if="${session.usuarioLogado}" type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
             data-bs-target="#novoFuncionarioModal">
             Adicionar Funcionário
         </button>
