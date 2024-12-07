@@ -1,27 +1,133 @@
 body {
-    
+    background-color: #121212; /* Fundo escuro */
+    color: #ffffff; /* Texto claro */
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    color: #ffffff;
 }
 
 .center {
     max-width: 75%;
     margin: 0 auto;
-    padding-top: 100px;
     padding: 20px;
-    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra escura */
 }
 
 /* Estilizar o título */
 h1 {
     text-align: center;
     margin-bottom: 50px;
-    color: #343a40;
+    color: #ffffff; /* Texto branco */
     font-weight: 700;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra mais escura */
+}
+
+/* Botões no modo escuro */
+.btn-warning {
+    background-color: transparent;
+    color: #ffc107;
+    border: 2px solid #ffc107;
+    transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #ffc107;
+    color: #121212;
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Estilo do botão .btn-secondary */
+.btn-secondary {
+    background-color: transparent;
+    color: #6f42c1; /* Cor roxa */
+    border: 2px solid #6f42c1; /* Borda roxa */
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #6f42c1; /* Cor de fundo roxa ao passar o mouse */
+    color: #fff; /* Cor do texto ao passar o mouse */
+}
+
+
+/* Navbar no modo escuro */
+.custom-navbar {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    width: 75%;
+    margin: 2px auto 70px auto;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.nav-link {
+    color: #bbbbbb;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* Estilo para o diálogo */
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    width: 600px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+h3 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+button.btn {
+    margin-top: 10px;
 }
 
 /* Estilizar a tabela */
@@ -29,125 +135,97 @@ table {
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    background-color: #0f0f0f; /* Fundo ainda mais escuro */
+    color: #e0e0e0; /* Texto claro com contraste */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7); /* Sombra escura mais forte */
+    border-collapse: collapse; /* Colapsar bordas para evitar espaços entre células */
+    border-spacing: 0; /* Garante que não haja espaçamento entre células */
 }
 
-th,
-td {
+/* Estilo geral para as células */
+th, td {
     text-align: center;
     padding: 15px;
+    border: none; /* Remove todas as bordas */
+    outline: none; /* Remove contorno residual */
+    color: #d1d1d1; /* Texto um pouco mais claro */
 }
 
-/* Cabeçalho da tabela */
+/* Estilo do cabeçalho */
 thead {
-    background-color: #007bff;
-    color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    background-color: #1a1a1a; /* Fundo ainda mais escuro no cabeçalho */
+    color: #f5f5f5; /* Texto branco brilhante para contraste */
 }
 
-/* Cor de fundo para linhas alternadas */
+/* Alternar cores apenas nas linhas da tabela */
 tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #141414; /* Fundo alternado bem escuro */
 }
 
-/* Sombras e estilo marcante nos botões */
-/* Botão Editar (Amarelo) */
-.btn-warning {
-    background-color: #fff;            /* Fundo branco */
-    color: #ffc107;                    /* Texto amarelo */
-    border: 2px solid #ffc107;         /* Borda amarela */
-    transition: all 0.3s ease;         /* Suaviza o efeito de hover */
-    hover {
-        background-color: #ffc107;         /* Fundo amarelo ao passar o mouse */
-        color: black;                       /* Texto branco ao passar o mouse */
-    }
+tbody tr:nth-child(odd) {
+    background-color: #0f0f0f; /* Fundo principal ainda mais escuro */
 }
 
-/* Botão Excluir (Vermelho) */
-.btn-danger {
-    background-color: #fff;            /* Fundo branco */
-    color: #dc3545;                    /* Texto vermelho */
-    border: 2px solid #dc3545;         /* Borda vermelha */
-    transition: all 0.3s ease;         /* Suaviza o efeito de hover */
-    hover {
-        background-color: #dc3545;         /* Fundo vermelho ao passar o mouse */
-        color: #fff;                       /* Texto branco ao passar o mouse */
-    }
+/* Sobrescrever variáveis do Bootstrap */
+.table>:not(caption)>*>* {
+    color: inherit; /* Herdar a cor correta */
+    background-color: inherit; /* Herdar o fundo correto */
+    box-shadow: none; /* Remove quaisquer sombras extras */
+    border: none; /* Remove qualquer borda imposta pelo Bootstrap */
+    outline: none; /* Remove contorno */
 }
 
-
-.btn-primary {
-    background-color: #fff;         
-    color:blue;                    
-    border: 2px solid blue;         
-    transition: all 0.3s ease;
-    
-    hover{
-        background-color: blue;         /* Fundo azul ao passar o mouse */
-        color: #fff; 
-    }
-}
-
-
-.custom-navbar {
-    background-color: #ffffff;        /* Fundo branco */
-    border: 1px solid #ddd;           /* Borda cinza suave */
-    border-radius: 8px;               /* Bordas arredondadas */
-    padding: 20px 20px;               /* Espaçamento interno */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    margin-top: 5px;                  /* Aproximar mais do topo */
-    width: 75%;                        /* Largura de 75% */
-    margin-left: auto;                 /* Alinha a margem à esquerda */
-    margin-right: auto;                /* Alinha a margem à direita */
-    margin-bottom: 70px;
-}
-
-
-.navbar-brand {
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.nav-link {
-    color: #555;
-    font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-
-    hover {
-        background-color: #f0f0f0;        /* Fundo cinza claro no hover */
-        color: #007bff;                   /* Texto azul no hover */
-    }
-}
-
-.blur-background {
-    filter: blur(5px);
-}
-
-/* Estilização do diálogo */
-dialog {
+/* Remover quaisquer bordas ou espaçamentos residuais */
+table, th, td, tr {
     border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* Estilo da modal */
+.modal-content {
+    background-color: #121212; /* Fundo da modal */
+    color: #ffffff; /* Cor do texto */
     border-radius: 8px;
-    padding: 20px;
-    width: 600px;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
-    text-align: left;
-    font-size: 1rem;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
 }
 
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+/* Cabeçalho da modal */
+.modal-header {
+    background-color: #121212; /* Fundo do cabeçalho da modal */
+    color: #ffffff; /* Cor do texto do cabeçalho */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
-/* Título e botões */
-h3 {
-    margin-bottom: 20px;
-    color: #333;
+/* Rodapé da modal */
+.modal-footer {
+    background-color: #121212; /* Fundo do rodapé da modal */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
-button.btn {
-    margin-top: 10px;
+
+/* Corpo da modal */
+.modal-body {
+    background-color: #121212; /* Fundo do corpo da modal */
 }
+
+/* Campos de texto */
+.modal-body input[type="email"], 
+.modal-body input[type="password"],
+.modal-body input[type="text"],
+
+.modal-body textarea {
+    background-color: #2c2c2c; /* Fundo escuro para os campos */
+    color: #ffffff; /* Cor do texto nos campos */
+    border: 1px solid #444; /* Borda sutil */
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%; /* Para preencher toda a largura do pai */
+    box-sizing: border-box; /* Para incluir padding na largura */
+    margin-bottom: 10px; /* Espaço entre os campos */
+    outline: none; /* Remove a borda padrão ao focar */
+}
+
+
 

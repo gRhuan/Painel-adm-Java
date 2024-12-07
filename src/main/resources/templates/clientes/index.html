@@ -4,48 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Clientes</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Barra de Navegação Minimalista -->
-    <nav class="navbar navbar-light custom-navbar">
-        <div class="container">
-            <!-- Logotipo ou Nome do Site -->
-            <a class="navbar-brand" href="#">Minha Loja</a>
+    <!-- Barra de Navegação -->
+    <div th:replace="fragments/header :: header"></div>
 
-            <!-- Links de Navegação -->
-            <ul class="navbar-nav d-flex flex-row gap-3">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/clientes}">Clientes</a>
-                </li>
-                <li cl <li class="nav-item">
-                    <a class="nav-link" th:href="@{/produtos}">Produtos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/funcionarios}">Funcionarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/sobre}">Sobre</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <h1>Lista de Clientes</h1>
 
     <!-- Tabela de clientes -->
     <div class="center">
-        <h1>Lista de Clientes</h1>
 
         <!-- Botão para abrir o diálogo -->
-        <button type="button" class="btn btn-primary mb-3" id="openDialogButton">
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#novoClienteModal">
             Adicionar Cliente
         </button>
+
 
         <table class="table table-bordered table-hover">
             <thead>
@@ -70,7 +48,8 @@
                     <td><button type="button" class="btn btn-warning">Editar</button></td>
                     <td>
                         <form th:action="@{/clientes/{id}/deletar(id=${clientes.id})}" method="post">
-                            <button class="btn btn-danger" type="submit" onclick="return confirm('Tem certeza que deseja deletar este cliente?');">Excluir</button>
+                            <button class="btn btn-danger" type="submit"
+                                onclick="return confirm('Tem certeza que deseja deletar este cliente?');">Excluir</button>
                         </form>
                     </td>
                 </tr>
@@ -79,55 +58,51 @@
     </div>
 
     <!-- Modal para Adicionar Novo Cliente -->
-    <dialog id="novoClienteDialog">
-        <form th:action="@{/clientes/adicionar}" method="post" class="form-group">
-            <h3>Adicionar um Cliente</h3>
-            <div class="mb-3">
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" maxlength="30" required>
+    <div class="modal fade" id="novoClienteModal" tabindex="-1" aria-labelledby="novoClienteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="novoClienteModalLabel">Adicionar um Cliente</h3>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/clientes/adicionar}" method="post" class="form-group">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" maxlength="30" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" maxlength="11" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" maxlength="40" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="endereco" class="form-label">Endereço</label>
+                            <input type="text" class="form-control" id="endereco" name="endereco" maxlength="40"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="celular" class="form-label">Celular</label>
+                            <input type="text" class="form-control" id="celular" name="celular" maxlength="13" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="button" class="btn btn-secondary" id="closeDialogButton">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="cpf" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" maxlength="11" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" maxlength="40" required>
-            </div>
-            <div class="mb-3">
-                <label for="endereco" class="form-label">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco" maxlength="40" required>
-            </div>
-            <div class="mb-3">
-                <label for="celular" class="form-label">Celular</label>
-                <input type="text" class="form-control" id="celular" name="celular" maxlength="13" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
-            <button type="button" class="btn btn-secondary" id="closeDialogButton">Cancelar</button>
-        </form>
-    </dialog>
+        </div>
+    </div>
 
-    <script>
+    <div th:include="fragments/login"></div>
 
-        const novoClienteDialog = document.getElementById("novoClienteDialog");
-        const openDialogButton = document.getElementById("openDialogButton");
-        const closeDialogButton = document.getElementById("closeDialogButton");
-
-        // Abre o diálogo ao clicar no botão
-        openDialogButton.addEventListener("click", () => {
-            novoClienteDialog.showModal();
-        });
-
-        // Fecha o diálogo ao clicar no botão de cancelar
-        closeDialogButton.addEventListener("click", () => {
-            novoClienteDialog.close();
-        });
-
-    </script>
-
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-     crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
