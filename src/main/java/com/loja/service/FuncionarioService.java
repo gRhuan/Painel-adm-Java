@@ -53,7 +53,12 @@ public class FuncionarioService {
             funcionario.setEmail(requisicao.getEmail());
             funcionario.setSalario(requisicao.getSalario());
             funcionario.setCargo(requisicao.getCargo());
-            funcionario.setSenha(encryptService.encrypt(requisicao.getSenha())); // Criptografar a nova senha
+
+            // Verifica se a senha foi preenchida antes de criptografar
+            if (requisicao.getSenha() != null && !requisicao.getSenha().isEmpty()) {
+                funcionario.setSenha(encryptService.encrypt(requisicao.getSenha()));
+            }
+
             funcionariosRepository.save(funcionario); // Salvar alterações
         }
     }
@@ -64,5 +69,5 @@ public class FuncionarioService {
             funcionariosRepository.deleteById(id);
         }
     }
-    //oi
+    // oi
 }

@@ -60,8 +60,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-danger" th:href="@{/login/logout}">Sair</a>
-                    </div>                    
+                        <form th:action="@{/logout}" method="get" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Sair</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

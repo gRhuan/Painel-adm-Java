@@ -1,12 +1,14 @@
 package com.loja.controller;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.loja.dto.RequisicaoNovoFuncionario;
 import com.loja.model.Funcionarios;
 import com.loja.service.FuncionarioService;
@@ -37,16 +39,26 @@ public class FuncionariosController {
         return "redirect:/funcionarios";
     }
 
-    @GetMapping("/funcionarios/{id}")
-    @ResponseBody
-    public Funcionarios getProduto(@PathVariable Long id) {
-        return funcionarioService.findById(id);
+    @GetMapping("/{id}/editar")
+    public ModelAndView editarFuncionario(@PathVariable Long id) {
+        Funcionarios funcionario = funcionarioService.findById(id);
+        ModelAndView mv = new ModelAndView("funcionarios/editar");
+        mv.addObject("funcionario", funcionario);
+        return mv;
+    }
+
+    @GetMapping("/funcionarios/{id}/editar")
+    public ModelAndView editar(@PathVariable Long id) {
+        Funcionarios funcionario = funcionarioService.findById(id);
+        ModelAndView mv = new ModelAndView("funcionarios/editar");
+        mv.addObject("funcionario", funcionario);
+        return mv;
     }
 
     @PostMapping("/funcionarios/{id}/atualizar")
     public String atualizar(@PathVariable Long id, RequisicaoNovoFuncionario requisicao) {
         funcionarioService.updateById(id, requisicao);
-        return "redirect/funcionarios";
+        return "redirect:/funcionarios";
     }
 
     @PostMapping("/funcionarios/{id}/deletar")

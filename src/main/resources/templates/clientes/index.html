@@ -20,7 +20,7 @@
     <div class="center">
 
         <!-- Botão para abrir o diálogo -->
-        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#novoClienteModal">
+        <button th:if="${session.usuarioLogado}" type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#novoClienteModal">
             Adicionar Cliente
         </button>
 
@@ -34,7 +34,7 @@
                     <th>Email</th>
                     <th>Endereço</th>
                     <th>Celular</th>
-                    <th colspan="2">Ações</th>
+                    <th th:if="${session.usuarioLogado}" colspan="2">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,13 +45,15 @@
                     <td th:text="${clientes.email}"></td>
                     <td th:text="${clientes.endereco}"></td>
                     <td th:text="${clientes.celular}"></td>
-                    <td><button type="button" class="btn btn-warning">Editar</button></td>
-                    <td>
-                        <form th:action="@{/clientes/{id}/deletar(id=${clientes.id})}" method="post">
-                            <button class="btn btn-danger" type="submit"
-                                onclick="return confirm('Tem certeza que deseja deletar este cliente?');">Excluir</button>
-                        </form>
-                    </td>
+                    <div th:if="${session.usuarioLogado}">
+                        <td><button type="button" class="btn btn-warning">Editar</button></td>
+                        <td>
+                            <form th:action="@{/clientes/{id}/deletar(id=${clientes.id})}" method="post">
+                                <button class="btn btn-danger" type="submit"
+                                    onclick="return confirm('Tem certeza que deseja deletar este cliente?');">Excluir</button>
+                            </form>
+                        </td>
+                    </div>
                 </tr>
             </tbody>
         </table>
