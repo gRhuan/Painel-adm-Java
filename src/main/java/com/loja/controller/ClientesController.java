@@ -11,6 +11,8 @@ import com.loja.dto.RequisicaoNovoCliente;
 import com.loja.model.Clientes;
 import com.loja.service.ClienteService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/clientes") // Agrupando rotas relacionadas a clientes
 public class ClientesController {
@@ -38,14 +40,15 @@ public class ClientesController {
         return "redirect:/clientes";
     }
 
-    @GetMapping("/{id}")
-    @ResponseBody
-    public Clientes getCliente(@PathVariable Long id) {
-        return clienteService.findById(id);
-    }
-
     @GetMapping("/{id}/editar")
-    public ModelAndView editarCliente(@PathVariable Long id) {
+    public ModelAndView editarCliente(@PathVariable Long id, HttpSession session) {
+        // Verifica se o usuário está logado
+        Boolean usuarioLogado = (Boolean) session.getAttribute("usuarioLogado");
+        if (usuarioLogado == null || !usuarioLogado) {
+            return new ModelAndView("redirect:/"); // Redireciona para a página de login
+        }
+
+        // Busca o cliente pelo ID e retorna a página de edição
         Clientes cliente = clienteService.findById(id);
         ModelAndView mv = new ModelAndView("clientes/editar");
         mv.addObject("cliente", cliente); // Adiciona o objeto cliente ao modelo

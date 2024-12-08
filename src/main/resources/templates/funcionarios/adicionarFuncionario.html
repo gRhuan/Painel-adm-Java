@@ -1,0 +1,59 @@
+<html>
+<!-- Fragmento de Thymeleaf para inclusão em outras partes do código -->
+<div th:fragment="adicionarFuncionario">
+    <!-- Modal para adicionar um novo funcionário -->
+    <div class="modal fade" id="novoFuncionarioModal" tabindex="-1" aria-labelledby="novoFuncionarioModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Cabeçalho da modal -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="novoFuncionarioModalLabel">Adicionar um Funcionário</h5>
+                    <!-- Botão para fechar a modal -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Corpo da modal -->
+                <div class="modal-body">
+                    <!-- Formulário para enviar os dados do novo funcionário -->
+                    <form th:action="@{/funcionarios/adicionar}" method="post" class="form-group">
+                        <!-- Campo para o nome do funcionário -->
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" maxlength="30" required>
+                        </div>
+                        <!-- Campo para o CPF do funcionário -->
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" maxlength="11" required>
+                        </div>
+                        <!-- Campo para o email do funcionário -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" maxlength="40" required>
+                        </div>
+                        <!-- Campo para o cargo do funcionário -->
+                        <div class="mb-3">
+                            <label for="cargo" class="form-label">Cargo</label>
+                            <input type="text" class="form-control" id="cargo" name="cargo" maxlength="25" required>
+                        </div>
+                        <!-- Campo para o salário do funcionário -->
+                        <div class="mb-3">
+                            <label for="salario" class="form-label">Salário</label>
+                            <input type="text" class="form-control" id="salario" name="salario" maxlength="10" required>
+                        </div>
+                        <!-- Campo para a senha do funcionário -->
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="text" class="form-control" id="senha" name="senha" maxlength="40" required>
+                        </div>
+                        <!-- Botões para enviar ou cancelar o formulário -->
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

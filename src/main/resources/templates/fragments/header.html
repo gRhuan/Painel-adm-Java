@@ -2,71 +2,53 @@
 <html>
 
 <body>
-
+    <!-- Fragmento de Thymeleaf para o cabeçalho -->
     <div th:fragment="header">
+        <!-- Barra de navegação usando Bootstrap -->
         <nav class="navbar navbar-light custom-navbar">
             <div class="container">
                 <!-- Logotipo ou Nome do Site -->
                 <a class="navbar-brand" th:href="@{/}">Minha Loja</a>
 
-                <!-- Links de Navegação -->
+                <!-- Links de navegação -->
                 <ul class="navbar-nav d-flex flex-row gap-3">
+                    <!-- Link para a página inicial -->
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/}">Início</a>
                     </li>
+                    <!-- Link para a página de clientes -->
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/clientes}">Clientes</a>
                     </li>
+                    <!-- Link para a página de produtos -->
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/produtos}">Produtos</a>
                     </li>
+                    <!-- Link para a página de funcionários -->
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/funcionarios}">Funcionários</a>
                     </li>
+                    <!-- Link para a página "Sobre" -->
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/sobre}">Sobre</a>
                     </li>
 
+                    <!-- Link de login/logout -->
                     <li>
-                        <!-- Se o usuário estiver logado -->
+                        <!-- Exibe o link de logout se o usuário estiver logado -->
                         <a th:if="${session.usuarioLogado}" class="nav-link" data-bs-toggle="modal"
                             data-bs-target="#confirmLogoutModal">
                             <i style="color: red;" class="bi bi-box-arrow-right"></i> Sair
                         </a>
 
-                        <!-- Se o usuário não estiver logado -->
-                        <!-- Botão para abrir a modal de login -->
+                        <!-- Exibe o link de login se o usuário não estiver logado -->
                         <a th:if="${session.usuarioLogado == null or !session.usuarioLogado}" class="nav-link"
                             data-bs-toggle="modal" data-bs-target="#loginModal">
                             <i style="color: green;" class="bi bi-box-arrow-in-right"></i> Entrar
                         </a>
-
                     </li>
                 </ul>
             </div>
         </nav>
-
-        <!-- Modal de confirmação de logout -->
-        <div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-labelledby="confirmLogoutModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="confirmLogoutModalLabel">Confirmação de Logout</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Você tem certeza de que deseja sair?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <form th:action="@{/logout}" method="get" style="display:inline;">
-                            <button type="submit" class="btn btn-danger">Sair</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </html>

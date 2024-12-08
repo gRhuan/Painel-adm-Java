@@ -11,6 +11,8 @@ import com.loja.dto.RequisicaoNovoProduto;
 import com.loja.model.Produtos;
 import com.loja.service.ProdutoService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/produtos") // Agrupando rotas relacionadas a produtos
 public class ProdutosController {
@@ -38,14 +40,16 @@ public class ProdutosController {
         return "redirect:/produtos";
     }
 
-    @GetMapping("/{id}")
-    @ResponseBody
-    public Produtos getProduto(@PathVariable Long id) {
-        return produtoService.findById(id);
-    }
-
     @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable Long id) {
+    public ModelAndView editar(@PathVariable Long id, HttpSession session) {
+        // Verifica se o usuário está logado
+        Boolean usuarioLogado = (Boolean) session.getAttribute("usuarioLogado");
+        if (usuarioLogado == null || !usuarioLogado) {
+            // Redireciona para a página de login se o usuário não estiver logado
+            return new ModelAndView("redirect:/");
+        }
+
+        // Se estiver logado, carrega o produto
         Produtos produto = produtoService.findById(id);
         ModelAndView mv = new ModelAndView("produtos/editar");
         mv.addObject("produto", produto);

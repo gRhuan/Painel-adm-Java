@@ -1,31 +1,66 @@
 <html>
-    <div th:fragment="login">
-    <!-- Modal -->
+<div th:fragment="login">
+    <!-- Modal de Login -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+                <!-- Cabeçalho do modal -->
                 <div class="modal-header">
                     <h5 class="modal-title" id="loginModalLabel">Login</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <!-- Formulário de login -->
                 <form th:action="@{/login}" method="post">
                     <div class="modal-body">
+                        <!-- Campo de Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
+                        <!-- Campo de Senha -->
                         <div class="mb-3">
                             <label for="senha" class="form-label">Senha</label>
                             <input type="password" class="form-control" id="senha" name="senha" required>
                         </div>
                     </div>
+                    <!-- Rodapé do modal -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Entrar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <!-- Modal de confirmação de logout -->
+    <div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-labelledby="confirmLogoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Cabeçalho da modal -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmLogoutModalLabel">Confirmação de Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Corpo da modal -->
+                <div class="modal-body">
+                    <p>Você tem certeza de que deseja sair?</p>
+                </div>
+                <!-- Rodapé da modal -->
+                <div class="modal-footer">
+                    <!-- Botão de cancelar -->
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</button>
+                    <!-- Formulário de logout -->
+                    <form th:action="@{/logout}" method="get" style="display:inline;">
+                        <!-- Botão de confirmação de logout -->
+                        <button type="submit" class="btn btn-danger">Sair</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+</div>
+
 </html>

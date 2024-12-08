@@ -1,0 +1,56 @@
+<html>
+<!-- Fragmento Thymeleaf para incluir a modal em outras partes do código -->
+<div th:fragment="ModalAdicionar">
+    <!-- Modal para Adicionar Novo Produto -->
+    <div class="modal fade" id="novoProdutoModal" tabindex="-1" aria-labelledby="novoProdutoModalLabel"
+        aria-hidden="true">
+        <!-- Diálogo da modal -->
+        <div class="modal-dialog">
+            <!-- Conteúdo da modal -->
+            <div class="modal-content">
+                <!-- Cabeçalho da modal -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="novoProdutoModalLabel">Adicionar um Produto</h5>
+                    <!-- Botão de fechamento da modal -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Corpo da modal -->
+                <div class="modal-body">
+                    <!-- Formulário para enviar os dados do novo produto -->
+                    <form th:action="@{/produtos/adicionar}" method="post" class="form-group">
+                        <!-- Campo de entrada para o nome do produto -->
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" maxlength="20" required>
+                        </div>
+                        <!-- Campo de entrada para a descrição do produto -->
+                        <div class="mb-3">
+                            <label for="descricao" class="form-label">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" name="descricao" maxlength="50"
+                                required>
+                        </div>
+                        <!-- Campo de entrada para a quantidade em estoque -->
+                        <div class="mb-3">
+                            <label for="estoque" class="form-label">Estoque</label>
+                            <input type="text" class="form-control" id="estoque" name="estoque" required>
+                        </div>
+                        <!-- Campo de entrada para o valor do produto -->
+                        <div class="mb-3">
+                            <label for="valor" class="form-label">Valor</label>
+                            <input type="text" class="form-control" id="valor" name="valor" maxlength="10" required>
+                        </div>
+                        <!-- Rodapé da modal -->
+                        <div class="modal-footer">
+                            <!-- Botão para enviar o formulário -->
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <!-- Botão para fechar a modal -->
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

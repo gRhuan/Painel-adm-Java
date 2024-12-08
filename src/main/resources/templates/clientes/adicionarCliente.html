@@ -1,0 +1,54 @@
+<html>
+<div th:fragment="adicionarCliente">
+    <!-- Modal de Adicionar Cliente -->
+    <div class="modal fade" id="novoClienteModal" tabindex="-1" aria-labelledby="novoClienteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Cabeçalho do modal -->
+                <div class="modal-header">
+                    <h3 id="novoClienteModalLabel">Adicionar um Cliente</h3>
+                </div>
+                <!-- Corpo do modal -->
+                <div class="modal-body">
+                    <!-- Formulário para adicionar um cliente -->
+                    <form th:action="@{/clientes/adicionar}" method="post" class="form-group">
+                        <!-- Campo de Nome -->
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" maxlength="30" required>
+                        </div>
+                        <!-- Campo de CPF -->
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" maxlength="11" required>
+                        </div>
+                        <!-- Campo de Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" maxlength="40" required>
+                        </div>
+                        <!-- Campo de Endereço -->
+                        <div class="mb-3">
+                            <label for="endereco" class="form-label">Endereço</label>
+                            <input type="text" class="form-control" id="endereco" name="endereco" maxlength="40"
+                                required>
+                        </div>
+                        <!-- Campo de Celular -->
+                        <div class="mb-3">
+                            <label for="celular" class="form-label">Celular</label>
+                            <input type="text" class="form-control" id="celular" name="celular" maxlength="13" required>
+                        </div>
+                        <!-- Rodapé do modal -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="button" class="btn btn-secondary" id="closeDialogButton">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
